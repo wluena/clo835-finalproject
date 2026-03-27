@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # --- 1. CONFIGURATION ---
 DBHOST = os.environ.get("DBHOST") or "mysql"
-DBUSER = os.environ.get("db-user") or "root"       # Use the key from ConfigMap/Secret
-DBPWD = os.environ.get("db-password")              # Use the key from Secret
+DBUSER = os.environ.get("DBUSER") or "root"   # Changed from "db-user" to "DBUSER"
+DBPWD = os.environ.get("DBPWD")               # Changed from "db-password" to "DBPWD"
 DATABASE = os.environ.get("DATABASE") or "employees"
 DBPORT = int(os.environ.get("DBPORT") or 3306)
 
