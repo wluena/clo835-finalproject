@@ -15,13 +15,14 @@ spec:
     spec:
       containers:
       - name: mysql
+        # Note: Ensure this image has been pushed to your ECR!
         image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:mysql-v1
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secrets
-              key: db-password
+              key: db-password  # Ensure matches your secrets.yaml key
         - name: MYSQL_DATABASE
           value: employees
         ports:
@@ -31,12 +32,13 @@ spec:
           mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: mysql-pvc  # UPDATED: Changed from emptyDir to use your PVC
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql  # UPDATED: Changed from mysql-service to mysql
+  name: mysql 
   namespace: final
 spec:
   selector:
