@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip install pytest
+        pip install flask pymysql boto3 pytest
 
     - name: Run Unit Tests
       run: |
