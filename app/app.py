@@ -7,9 +7,9 @@ import logging
 app = Flask(__name__)
 
 # --- 1. CONFIGURATION ---
-DBHOST = os.environ.get("DBHOST") or "localhost"
-DBUSER = os.environ.get("DBUSER") 
-DBPWD = os.environ.get("DBPWD")
+DBHOST = os.environ.get("DBHOST") or "mysql"
+DBUSER = os.environ.get("db-user") or "root"       # Use the key from ConfigMap/Secret
+DBPWD = os.environ.get("db-password")              # Use the key from Secret
 DATABASE = os.environ.get("DATABASE") or "employees"
 DBPORT = int(os.environ.get("DBPORT") or 3306)
 
@@ -119,4 +119,6 @@ def FetchData():
         db_conn.close()
 
 if __name__ == '__main__':
+    # Download the image once at startup
+    download_bg_from_s3() 
     app.run(host='0.0.0.0', port=81, debug=True)
