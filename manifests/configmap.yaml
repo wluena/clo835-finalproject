@@ -9,7 +9,8 @@ data:
   GROUP_NAME: "Group 11"
   STUDENT_NAME: "Winlyn Luena, Vernard Canlas, Heracleo Elbina"
   S3_BUCKET: "clo835-finalproject-whv"
-  S3_IMAGE_NAME: "whv-image.jpg"
-  DBHOST: "mysql" # Matches the Service name below
+  S3_IMAGE_NAME: "whv-image.jpg" # Change this to whv-image2 during the demo
+  # Database Connection Details
+  DBHOST: "mysql" 
   DBPORT: "3306"
   DATABASE: "employees"
