@@ -26,6 +26,9 @@ jobs:
         pip install flask pymysql boto3 pytest
 
     - name: Run Unit Tests
+      env:
+        # This provides the variable the app needs to pass the test
+        STUDENT_NAME: "Winlyn Luena, Vernard Canlas, Heracleo Elbina"
       run: |
         python -m pytest test_app.py
 
