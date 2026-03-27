@@ -5,6 +5,7 @@ metadata:
   namespace: final
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: flask-app
@@ -12,20 +13,23 @@ spec:
     metadata:
       labels:
         app: flask-app
+        version: "v6-s3-bg"
     spec:
       serviceAccountName: clo835
       containers:
       - name: flask-app
-        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:latest
+        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:v6
         imagePullPolicy: Always
         ports:
         - containerPort: 81
         env:
+        # STUDENT NAME for the Header
         - name: STUDENT_NAME
           valueFrom:
             configMapKeyRef:
               name: flask-config
               key: STUDENT_NAME
+        # S3 CONFIGURATION (handles background image)
         - name: S3_BUCKET
           valueFrom:
             configMapKeyRef:
@@ -36,6 +40,7 @@ spec:
             configMapKeyRef:
               name: flask-config
               key: S3_IMAGE_NAME
+        # DATABASE CREDENTIALS (Secrets)
         - name: DBPWD
           valueFrom:
             secretKeyRef:
@@ -46,6 +51,7 @@ spec:
             secretKeyRef:
               name: mysql-secrets
               key: db-user
+        # DATABASE CONNECTION INFO (ConfigMap)
         - name: DBHOST
           valueFrom:
             configMapKeyRef:

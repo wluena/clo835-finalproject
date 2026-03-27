@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:mysql-v1
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -29,14 +29,9 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
-        - name: mysql-init-scripts
-          mountPath: /docker-entrypoint-initdb.d
       volumes:
       - name: mysql-persistent-storage
         emptyDir: {}
-      - name: mysql-init-scripts
-        configMap:
-          name: mysql-init-script
 ---
 apiVersion: v1
 kind: Service
