@@ -22,12 +22,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r app/requirements.txt
+        pip install -r requirements.txt
         pip install flask pymysql boto3 pytest
 
     - name: Run Unit Tests
       run: |
-        python -m pytest app/test_app.py
+        python -m pytest test_app.py
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
