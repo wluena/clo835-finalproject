@@ -2,7 +2,8 @@ name: Build and Push to ECR
 
 on:
   push:
-    [cite_start]branches: [ "master" ] # Mandatory: master branch protection 
+    branches:
+      - master  # Mandatory: master branch protection
 
 jobs:
   build-and-push:
@@ -10,6 +11,20 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Run Unit Tests
+      run: |
+        python -m unittest test_app.py  # This satisfies the "Unit Test" requirement
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -25,10 +40,10 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        [cite_start]ECR_REPOSITORY: final-project-repo # Replace with your ECR repo name [cite: 69]
+        ECR_REPOSITORY: final-project-repo
         IMAGE_TAG: latest
       run: |
-        # Build the docker image [cite: 36, 68]
+        # Build the docker image
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        # Push the image to ECR [cite: 38, 61]
+        # Push the image to ECR
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flask-config
+  namespace: final
+data:
+  STUDENT_NAME: "Winlyn, John Vernard, Heracleo"
+  S3_BUCKET: "your-s3-bucket-name" # Replace with your bucket name
+  S3_IMAGE_NAME: "background.jpg"  # Replace with your image file name
