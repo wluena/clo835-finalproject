@@ -1,0 +1,21 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: final-project
+  region: "us-east-1"
+  version: "1.31"
+
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+iam:
+  serviceRoleARN: arn:aws:iam::832666763937:role/LabRole
+
+managedNodeGroups:
+- name: standard-nodes
+  desiredCapacity: 2
+  instanceType: t3.medium  # Using medium ensures enough RAM for MySQL + Flask
+  ssh:
+    enableSsm: true
+  iam:
+    instanceRoleARN: arn:aws:iam::832666763937:role/LabRole

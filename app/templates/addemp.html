@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee Information</title>
+    <style>
+        body {
+            background-image: url('{{ bg_image }}');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-family: avenir, sans-serif;
+        }
+        input {
+            height: 25px;
+            font-size: 14pt;
+            color: black;
+        }
+        .btn-style {
+            background: grey;
+            height: 45px;
+            width: 200px;
+            color: white;
+            font-style: oblique;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <header>
+            <h1 style="color: DodgerBlue">Project by: {{ name }}</h1>
+            <h2 style="color: white">Employee Database</h2>
+        </header>
+
+        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+            Employee ID:<br> 
+            <input type="number" name="emp_id" autofocus><br><br>
+
+            First Name:<br> 
+            <input type="text" name="first_name"><br><br>
+
+            Last Name:<br> 
+            <input type="text" name="last_name"><br><br>
+
+            Primary Skills:<br> 
+            <input type="text" name="primary_skill"><br><br>
+
+            Location:<br> 
+            <input type="text" name="location"><br><br>
+
+            <button type="submit" class="btn-style">UPDATE DATABASE</button><br><br>
+            <button type="submit" formaction="/getemp" class="btn-style">GET EMPLOYEE INFORMATION</button><br><br>
+        </form>
+
+        <br><br>
+        <a href="/about" style="color: yellow;">About Us</a>
+    </center>
+</body>
+</html>

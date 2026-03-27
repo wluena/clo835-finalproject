@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hello from Flask</title>
+    <style>
+        body {
+            /* Loads image from local storage saved by app.py */
+            background-image: url('{{ bg_image }}');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white; 
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; height: 90px; vertical-align: middle;">
+        <h1>Project by: {{ name }}</h1>
+
+        {% if contents %}
+        <textarea rows="10" cols="50">
+            {{ contents }}
+        </textarea>
+        {% endif %}
+    </div>
+    <br>
+    <center><a href="/" style="color: yellow;">Back to Home</a></center>
+</body>
+</html>
