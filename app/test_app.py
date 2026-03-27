@@ -22,3 +22,12 @@ def test_about_page(client):
     """Test that the /about route is reachable."""
     rv = client.get('/about')
     assert rv.status_code == 200
+    
+def test_s3_download_logic(client):
+    """Test if the app attempts to download from S3 without crashing."""
+    from app import download_bg_from_s3
+    try:
+        download_bg_from_s3()
+        assert True
+    except Exception as e:
+        pytest.fail(f"S3 download logic crashed: {e}")
