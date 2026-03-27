@@ -7,8 +7,9 @@ data:
   APP_COLOR: "Green"
   AWS_REGION: "us-east-1"
   GROUP_NAME: "Group 11"
-  S3_BUCKET: "clo835-finalproject-whv " # Replace with your bucket name
-  S3_IMAGE_NAME: "whv-image.jpg"  # Replace with your image file name
-  DBHOST: "mysql"
+  STUDENT_NAME: "Winlyn Luena, Vernard Canlas, Heracleo Elbina"
+  S3_BUCKET: "clo835-finalproject-whv"
+  S3_IMAGE_NAME: "whv-image.jpg"
+  DBHOST: "mysql" # Matches the Service name below
   DBPORT: "3306"
   DATABASE: "employees"

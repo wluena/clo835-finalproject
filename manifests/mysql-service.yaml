@@ -4,8 +4,9 @@ metadata:
   name: mysql
   namespace: final
 spec:
-  ports:
-    - port: 3306
   selector:
     app: mysql
-  clusterIP: None  # This makes it a Headless Service, common for DBs
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
