@@ -16,7 +16,7 @@ spec:
       serviceAccountName: clo835 # This must match the SA you create for S3 access
       containers:
       - name: flask-app
-        image: <YOUR_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:latest
+        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:latest
         ports:
         - containerPort: 81
         env:
