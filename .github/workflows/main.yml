@@ -1,0 +1,34 @@
+name: Build and Push to ECR
+
+on:
+  push:
+    [cite_start]branches: [ "master" ] # Mandatory: master branch protection 
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1 # Replace with your actual AWS region
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        [cite_start]ECR_REPOSITORY: final-project-repo # Replace with your ECR repo name [cite: 69]
+        IMAGE_TAG: latest
+      run: |
+        # Build the docker image [cite: 36, 68]
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        # Push the image to ECR [cite: 38, 61]
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
