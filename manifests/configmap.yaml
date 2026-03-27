@@ -4,6 +4,11 @@ metadata:
   name: flask-config
   namespace: final
 data:
-  STUDENT_NAME: "Winlyn, Heracleo, Vernard"
+  APP_COLOR: "Green"
+  AWS_REGION: "us-east-1"
+  GROUP_NAME: "Group 11"
   S3_BUCKET: "clo835-finalproject-whv " # Replace with your bucket name
   S3_IMAGE_NAME: "whv-image.jpg"  # Replace with your image file name
+  DBHOST: "mysql"
+  DBPORT: "3306"
+  DATABASE: "employees"
