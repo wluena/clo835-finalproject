@@ -61,7 +61,5 @@ jobs:
 
     - name: Deploy to EKS
       run: |
-        # This applies your manifests automatically
-        kubectl apply -f manifests/flask-deployment.yaml -n final
-        # This ensures the 'latest' image is actually refreshed
+        kubectl apply -f ../manifests/flask-deployment.yaml -n final
         kubectl rollout restart deployment/flask-app -n final
