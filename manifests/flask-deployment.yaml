@@ -22,13 +22,13 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 81
-        #resources:           #UNCOMMENT THIS SECTION FOR HPA CALCULATION
-        #  requests:
-        #    cpu: "100m"      # This is the "baseline" (10% of a core)
-        #    memory: "128Mi"
-        #  limits:
-        #    cpu: "200m"
-        #    memory: "256Mi"
+        resources:           #UNCOMMENT THIS SECTION FOR HPA CALCULATION
+          requests:
+            cpu: "100m"      # This is the "baseline" (10% of a core)
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
         env:
         # STUDENT NAME for the Header
         - name: STUDENT_NAME
