@@ -18,17 +18,17 @@ spec:
       serviceAccountName: clo835
       containers:
       - name: flask-app
-        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:v6 #Final CICD Demo test
+        image: 832666763937.dkr.ecr.us-east-1.amazonaws.com/final-project-repo:latest #Final CICD Demo test
         imagePullPolicy: Always
         ports:
         - containerPort: 81
-      #  resources:           #UNCOMMENT THIS SECTION FOR HPA CALCULATION
-      #    requests:
-      #      cpu: "100m"      # This is the "baseline" (10% of a core)
-      #      memory: "128Mi"
-      #    limits:
-      #      cpu: "200m"
-      #      memory: "256Mi"
+        resources:           #UNCOMMENT THIS SECTION FOR HPA CALCULATION
+          requests:
+            cpu: "100m"      # This is the "baseline" (10% of a core)
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
         env:
         # STUDENT NAME for the Header
         - name: STUDENT_NAME
